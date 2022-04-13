@@ -1,0 +1,38 @@
+openapi: 3.0.1
+info:
+  title: Organization.API
+  version: v1
+paths:
+  /api/v{version}/organization/search:
+    post:
+      tags:
+        - OrganizationSearch
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationSearchInput'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationSearchInput'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/OrganizationSearchInput'
+      responses:
+        '200':
+          description: Success
+components:
+  schemas:
+    OrganizationSearchInput:
+      type: object
+      properties:
+        organizationName:
+          type: string
+          nullable: true
+      additionalProperties: false
