@@ -1,0 +1,531 @@
+openapi: 3.0.1
+info:
+  title: ProductSearch.API
+  version: v1
+servers:
+  - url: http://10.63.134.140:30428
+paths:
+  /api/v{version}/product:
+    get:
+      tags:
+        - ProductSearch
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  type: string
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+            text/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /api/v{version}/product/{id}:
+    get:
+      tags:
+        - ProductSearch
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+            text/json:
+              schema:
+                type: string
+  /api/v{version}/product/GetDatafromJavaAPI:
+    get:
+      tags:
+        - ProductSearch
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+            text/json:
+              schema:
+                type: string
+  /api/v{version}/product/GetProduct:
+    get:
+      tags:
+        - ProductSearch
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+            text/json:
+              schema:
+                type: string
+  /api/v{version}/product/search:
+    post:
+      tags:
+        - ProductSearch
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NormalProductSearchInput'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/NormalProductSearchInput'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/NormalProductSearchInput'
+      responses:
+        '200':
+          description: Success
+  /api/v{version}/product/numver-search:
+    post:
+      tags:
+        - ProductSearch
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NumverProductSearchInput'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/NumverProductSearchInput'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/NumverProductSearchInput'
+      responses:
+        '200':
+          description: Success
+  /api/v{version}/product/GetProductbyPNo:
+    post:
+      tags:
+        - ProductSearch
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NormalProductSearchInput'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/NormalProductSearchInput'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/NormalProductSearchInput'
+      responses:
+        '200':
+          description: Success
+components:
+  schemas:
+    NormalProductSearchInput:
+      type: object
+      properties:
+        pixd_StartPrNoE:
+          type: string
+          nullable: true
+        pixd_StartPrRevE:
+          type: string
+          nullable: true
+        pixd_StartDesignCode:
+          type: string
+          nullable: true
+        pixd_StartDesignInd:
+          type: string
+          nullable: true
+        pixd_StartNotCode:
+          type: string
+          nullable: true
+        pixd_StartRefAff:
+          type: string
+          nullable: true
+        pixd_StartBusArea:
+          type: string
+          nullable: true
+        pixd_StartTlmpnOmr:
+          type: string
+          nullable: true
+        pixd_StartPrefKls:
+          type: string
+          nullable: true
+        pixd_StartConfigVer:
+          type: string
+          nullable: true
+        productNumber:
+          type: string
+          nullable: true
+        pixd_LikeDesResp:
+          type: string
+          nullable: true
+        pixd_LikeRelResp:
+          type: string
+          nullable: true
+        functionDesignation:
+          type: string
+          nullable: true
+        contactId:
+          type: string
+          nullable: true
+        productName:
+          type: string
+          nullable: true
+        pixd_LikeProdOwnResp:
+          type: string
+          nullable: true
+        configurationVersion:
+          type: string
+          nullable: true
+        pixd_ExempFlag:
+          type: string
+          nullable: true
+        designCodeDefiner:
+          type: string
+          nullable: true
+        designCode:
+          type: string
+          nullable: true
+        releaseCodeDefiner:
+          type: string
+          nullable: true
+        releaseCode:
+          type: string
+          nullable: true
+        restrictionCodeDefiner:
+          type: string
+          nullable: true
+        restrictionCode:
+          type: string
+          nullable: true
+        standardNumbers:
+          type: string
+          nullable: true
+        rState:
+          type: string
+          nullable: true
+        uniqueSearch:
+          type: string
+          nullable: true
+        search:
+          type: string
+          nullable: true
+        pixd_SearchSortOrder:
+          type: string
+          nullable: true
+        pixd_CountOnlyFlag:
+          type: string
+          nullable: true
+        pixd_RowCount:
+          type: string
+          nullable: true
+        pixd_InfoType:
+          type: string
+          default: ' '
+          nullable: true
+        pixd_Confirm:
+          type: string
+          nullable: true
+        traceabilityReq:
+          type: string
+          nullable: true
+        commercialClassification:
+          type: string
+          nullable: true
+        sparePartProducts:
+          type: string
+          nullable: true
+        pixd_AuthCheckWhenRead:
+          type: string
+          nullable: true
+        pixd_CommitFlag:
+          type: string
+          nullable: true
+        pixd_CommitFrequence:
+          type: string
+          nullable: true
+        pixd_CopyWhenInsertingRstate:
+          type: string
+          nullable: true
+        pixd_ConfirmRC:
+          type: string
+          nullable: true
+        pixd_HighChSignStako:
+          type: string
+          nullable: true
+        pixd_HighChTimeStako:
+          type: string
+          nullable: true
+        pixd_Application:
+          type: string
+          nullable: true
+        designResponsible:
+          type: string
+          nullable: true
+        pixd_LikeRelRespO:
+          type: string
+          nullable: true
+        pixd_LikeProdOwnRespO:
+          type: string
+          nullable: true
+        prodWidth:
+          type: string
+          nullable: true
+        prRevEKey:
+          type: string
+          nullable: true
+        psdmFlagN:
+          type: string
+          nullable: true
+        rStateFlag:
+          type: string
+          nullable: true
+        orderDataFlag:
+          type: string
+          nullable: true
+        rStateSel:
+          type: string
+          nullable: true
+        typeOfSel:
+          type: string
+          nullable: true
+        confirm:
+          type: string
+          nullable: true
+        pdmSourceFlag:
+          type: string
+          nullable: true
+        sparePartFLG:
+          type: string
+          nullable: true
+        noOfRows:
+          type: integer
+          format: int32
+        lastProductNo:
+          type: string
+          nullable: true
+        lastRState:
+          type: string
+          nullable: true
+      additionalProperties: false
+    NumverProductSearchInput:
+      type: object
+      properties:
+        pixd_StartPrNoE:
+          type: string
+          nullable: true
+        pixd_StartPrRevE:
+          type: string
+          nullable: true
+        pixd_StartDesignCode:
+          type: string
+          nullable: true
+        pixd_StartDesignInd:
+          type: string
+          nullable: true
+        pixd_StartNotCode:
+          type: string
+          nullable: true
+        pixd_StartRefAff:
+          type: string
+          nullable: true
+        pixd_StartBusArea:
+          type: string
+          nullable: true
+        pixd_StartTlmpnOmr:
+          type: string
+          nullable: true
+        pixd_StartPrefKls:
+          type: string
+          nullable: true
+        pixd_StartConfigVer:
+          type: string
+          nullable: true
+        productNumber:
+          type: string
+          nullable: true
+        pixd_LikeDesResp:
+          type: string
+          nullable: true
+        pixd_LikeRelResp:
+          type: string
+          nullable: true
+        functionDesignation:
+          type: string
+          nullable: true
+        contactId:
+          type: string
+          nullable: true
+        productName:
+          type: string
+          nullable: true
+        pixd_LikeProdOwnResp:
+          type: string
+          nullable: true
+        configurationVersion:
+          type: string
+          nullable: true
+        pixd_ExempFlag:
+          type: string
+          nullable: true
+        designCodeDefiner:
+          type: string
+          nullable: true
+        designCode:
+          type: string
+          nullable: true
+        releaseCodeDefiner:
+          type: string
+          nullable: true
+        releaseCode:
+          type: string
+          nullable: true
+        restrictionCodeDefiner:
+          type: string
+          nullable: true
+        restrictionCode:
+          type: string
+          nullable: true
+        standardNumbers:
+          type: string
+          nullable: true
+        rState:
+          type: string
+          nullable: true
+        search:
+          type: string
+          nullable: true
+        pixd_SearchSortOrder:
+          type: string
+          nullable: true
+        pixd_CountOnlyFlag:
+          type: string
+          nullable: true
+        pixd_RowCount:
+          type: string
+          nullable: true
+        pixd_InfoType:
+          type: string
+          default: ' '
+          nullable: true
+        pixd_Confirm:
+          type: string
+          nullable: true
+        traceabilityReq:
+          type: string
+          nullable: true
+        commercialClassification:
+          type: string
+          nullable: true
+        sparePartProducts:
+          type: string
+          nullable: true
+        pixd_AuthCheckWhenRead:
+          type: string
+          nullable: true
+        pixd_CommitFlag:
+          type: string
+          nullable: true
+        pixd_CommitFrequence:
+          type: string
+          nullable: true
+        pixd_CopyWhenInsertingRstate:
+          type: string
+          nullable: true
+        pixd_ConfirmRC:
+          type: string
+          nullable: true
+        pixd_HighChSignStako:
+          type: string
+          nullable: true
+        pixd_HighChTimeStako:
+          type: string
+          nullable: true
+        pixd_Application:
+          type: string
+          nullable: true
+        designResponsible:
+          type: string
+          nullable: true
+        pixd_LikeRelRespO:
+          type: string
+          nullable: true
+        pixd_LikeProdOwnRespO:
+          type: string
+          nullable: true
+        uniqueSearch:
+          type: string
+          nullable: true
+        noOfRows:
+          type: integer
+          format: int32
+        lastProductNo:
+          type: string
+          nullable: true
+        lastRState:
+          type: string
+          nullable: true
+      additionalProperties: false

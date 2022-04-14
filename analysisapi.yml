@@ -1,0 +1,276 @@
+openapi: 3.0.1
+info:
+  title: Ericsson.Analysis.API
+  version: v1
+servers:
+  - url: http://10.63.134.140:32285
+paths:
+  /api/v{version}/analysis/prod-struc/consists:
+    post:
+      tags:
+        - ConsistsOfProductStructure
+      parameters:
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PIYCActionAttributes'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/PIYCActionAttributes'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/PIYCActionAttributes'
+      responses:
+        '200':
+          description: Success
+  /api/v{version}/analysis/information-structure/included:
+    get:
+      tags:
+        - IncludedInInfoStruc
+      parameters:
+        - name: ProductNumber
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: Rstate
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+  /api/v{version}/analysis/included-in-prod-struc:
+    get:
+      tags:
+        - IncludedInProdStruc
+      parameters:
+        - name: productNumber
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+  /api/v{version}/analysis/reference-relations/included:
+    get:
+      tags:
+        - IncludedInRefRel
+      parameters:
+        - name: ProductNumber
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: RelationType
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: version
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+components:
+  schemas:
+    PIYCActionAttributes:
+      type: object
+      properties:
+        piyc_PrNoE:
+          type: string
+          nullable: true
+        piyc_PrRevE:
+          type: string
+          nullable: true
+        piyc_PStrRevE:
+          type: string
+          nullable: true
+        piyc_NoLevel:
+          type: string
+          nullable: true
+        piyc_Application:
+          type: string
+          nullable: true
+        piyc_PLSel:
+          type: string
+          nullable: true
+        piyc_PrDemand:
+          type: string
+          nullable: true
+        piyc_ReleaseDate:
+          type: string
+          nullable: true
+        piyc_DsDemand:
+          type: string
+          nullable: true
+        piyc_Exemption:
+          type: string
+          nullable: true
+        piyc_ReDemand:
+          type: string
+          nullable: true
+        piyc_ProdDemand:
+          type: string
+          nullable: true
+        piyc_RStateRule:
+          type: string
+          nullable: true
+        piyc_PStrType1:
+          type: string
+          nullable: true
+        piyc_PStrType2:
+          type: string
+          nullable: true
+        piyc_PStrType3:
+          type: string
+          nullable: true
+        piyc_PStrType4:
+          type: string
+          nullable: true
+        piyc_PStrType5:
+          type: string
+          nullable: true
+        piyc_PStrType6:
+          type: string
+          nullable: true
+        piyc_PStrType7:
+          type: string
+          nullable: true
+        piyc_PStrType8:
+          type: string
+          nullable: true
+        piyc_SortMethod:
+          type: string
+          nullable: true
+        piyc_OrderInData:
+          type: string
+          nullable: true
+        piyc_StopFlagSkip:
+          type: string
+          nullable: true
+        piyc_KdParentSkip:
+          type: string
+          nullable: true
+        piyc_QtyMult:
+          type: string
+          nullable: true
+        piyc_Qty:
+          type: string
+          nullable: true
+        piyc_StopBreakFlag:
+          type: string
+          nullable: true
+        piyc_FilteringType:
+          type: string
+          nullable: true
+        piyc_ABCClass100:
+          type: string
+          nullable: true
+        piyc_DesrespInData:
+          type: string
+          nullable: true
+        piyc_ConsOfType:
+          type: string
+          nullable: true
+        piyc_TracyabilityKey:
+          type: string
+          nullable: true
+        piyc_BusArea:
+          type: string
+          nullable: true
+        piyc_Market:
+          type: string
+          nullable: true
+        piyc_CompanyId:
+          type: string
+          nullable: true
+        piyc_NoLockingFlag:
+          type: string
+          nullable: true
+        piyc_ExportEccnFlag:
+          type: string
+          nullable: true
+        piyc_ResexFilter:
+          type: string
+          nullable: true
+        piyc_StakoReqFlag:
+          type: string
+          nullable: true
+        piyc_Fill1:
+          type: string
+          nullable: true
+        piyc_Fill8:
+          type: string
+          nullable: true
+        piyc_Fill10:
+          type: string
+          nullable: true
+        piyc_PrRevECH:
+          type: string
+          nullable: true
+        piyc_PStrRevECH:
+          type: string
+          nullable: true
+        piyc_PStrStDate:
+          type: string
+          nullable: true
+        piyc_OrderRevECH7:
+          type: string
+          nullable: true
+        piyc_ExempCodeHead:
+          type: string
+          nullable: true
+        piyc_KdArtUplIn:
+          type: string
+          nullable: true
+        piyc_ElizaIn:
+          type: string
+          nullable: true
+        piyc_Delimit:
+          type: string
+          nullable: true
+        piyc_ErrorMsgFlg:
+          type: string
+          nullable: true
+        piyc_ABCClassPos:
+          type: string
+          nullable: true
+        piyc_SpareinFlg:
+          type: string
+          nullable: true
+        piyc_AltprodReq:
+          type: string
+          nullable: true
+        piyc_InclManCodeZero:
+          type: string
+          nullable: true
+        piyc_InternalArea:
+          type: string
+          nullable: true
+        isNumverSelected:
+          type: boolean
+        isExactSelected:
+          type: boolean
+      additionalProperties: false
