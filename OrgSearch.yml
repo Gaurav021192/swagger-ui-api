@@ -2,6 +2,8 @@ openapi: 3.0.1
 info:
   title: Organization.API
   version: v1
+servers:
+  - url: http://10.63.134.140//31383
 paths:
   /api/v{version}/organization/search:
     post:
